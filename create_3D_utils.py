@@ -3,9 +3,6 @@ import numpy as np
 import SimpleITK as sitk
 from manipulate_3D_utils import *
 
-
-# Hello hello 
-
 def create_ellipsoid_volume(radii: tuple[float, float, float], dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float], 
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
@@ -23,8 +20,6 @@ def create_ellipsoid_volume(radii: tuple[float, float, float], dimensions: tuple
     
     return vtk_image, shape_name
 
-
-
 def create_prism_volume(size: tuple[float, float, float], dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
@@ -40,7 +35,6 @@ def create_prism_volume(size: tuple[float, float, float], dimensions: tuple[floa
     shape_name = f"cube_{size[0]}" if size[0] == size[1] == size[2] else f"prism_x{size[0]}_y{size[1]}_z{size[2]}"
 
     return vtk_image, shape_name
-
 
 def create_cylinder_volume(radius: float, height:float, dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
@@ -175,4 +169,3 @@ def create_torus_object(resolution: int, major_radius: float, minor_radius: floa
     obj_name = f"torus_Mr{major_radius}_mr{minor_radius}"
     
     return obj_polydata, obj_name
- 

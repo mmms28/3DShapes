@@ -186,7 +186,6 @@ def create_vtkimage_from_array(image_data: np.ndarray, spacing: tuple[float, flo
     
     return vtk_image
 
-
 def get_image_array(image):
     """
     Get a numpy array from the image.
@@ -398,7 +397,6 @@ def vtkPolyData_to_numpy(polydata):
     
     return points, faces
 
-
 def plot_vtkPolyData(polydata: vtk.vtkPolyData, polydata_name: str="Object", display: bool=True, save: bool=False, output_dir = None) -> None:
     """
     Plot a vtkPolyData object using matplotlib
@@ -515,4 +513,3 @@ def create_polydata_from_vtkImage(image_vtk: vtk.vtkImageData, apply_gaussian: b
 
     # Return the resulting polydata (surface extracted by Marching Cubes)
     return marching_cubes.GetOutput()
-
