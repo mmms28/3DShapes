@@ -107,7 +107,7 @@ def create_torus_volume(major_radius: float, minor_radius: float,  dimensions: t
     return vtk_image, shape_name
 
 def create_ellipsoid_object(resolution: int, radii: tuple[float, float, float], center: tuple[float, float, float]):
-    # Create points for the ellipsoid using parametric equations
+    """ Create points for the ellipsoid using parametric equations. """
     phi = np.linspace(0, np.pi, resolution)
     theta = np.linspace(0, 2 * np.pi, resolution)
     phi, theta = np.meshgrid(phi, theta)
@@ -123,7 +123,7 @@ def create_ellipsoid_object(resolution: int, radii: tuple[float, float, float], 
     return obj_polydata, obj_name
 
 def create_cylinder_object(resolution: int, radius: float, height: float, center: tuple[float, float, float]):
-    # Create points for the cylinder using parametric equations
+    """ Create points for the cylinder using parametric equations. """
     theta = np.linspace(0, 2 * np.pi, resolution)
     z = np.linspace(0, height, resolution)
     theta, z = np.meshgrid(theta, z)
@@ -139,7 +139,7 @@ def create_cylinder_object(resolution: int, radius: float, height: float, center
     return obj_polydata, obj_name
 
 def create_cone_object(resolution: int, radius: float, height: float, center: tuple[float, float, float]):
-    # Create points for the cone using parametric equations
+    """ Create points for the cone using parametric equations. """
     phi = np.linspace(0, 2 * np.pi, resolution)
     z_values = np.linspace(0, height, resolution)
     phi, z_values = np.meshgrid(phi, z_values)
@@ -155,7 +155,7 @@ def create_cone_object(resolution: int, radius: float, height: float, center: tu
     return obj_polydata, obj_name
 
 def create_torus_object(resolution: int, major_radius: float, minor_radius: float, center: tuple[float, float, float]):
-    # Create points for the torus using parametric equations
+    """ Create points for the torus using parametric equations """
     phi = np.linspace(0, 2* np.pi, resolution)
     theta = np.linspace(0, 2 * np.pi, resolution)
     phi, theta = np.meshgrid(phi, theta)
