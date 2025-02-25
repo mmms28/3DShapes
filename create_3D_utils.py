@@ -6,7 +6,9 @@ from manipulate_3D_utils import *
 def create_ellipsoid_volume(radii: tuple[float, float, float], dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float], 
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
-    """ Creates a 3D ellipsoid (or sphere) inside a voxel grid and saves it. """
+    """ 
+    Creates a 3D ellipsoid (or sphere) inside a voxel grid and saves it. 
+    """
     image_data = np.zeros(dimensions, dtype=np.uint8)
     x, y, z = np.indices(dimensions)
     mask = ((x - center[0])**2 / radii[0]**2 +
@@ -23,7 +25,9 @@ def create_ellipsoid_volume(radii: tuple[float, float, float], dimensions: tuple
 def create_prism_volume(size: tuple[float, float, float], dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
-    """ Creates a 3D rectangular prism or cube inside a voxel grid and saves it. """
+    """ 
+    Creates a 3D rectangular prism or cube inside a voxel grid and saves it. 
+    """
     image_data = np.zeros(dimensions, dtype=np.uint8)
     x_min, x_max = center[0] - size[0] // 2, center[0] + size[0] // 2
     y_min, y_max = center[1] - size[1] // 2, center[1] + size[1] // 2
@@ -39,7 +43,9 @@ def create_prism_volume(size: tuple[float, float, float], dimensions: tuple[floa
 def create_cylinder_volume(radius: float, height:float, dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
-    """ Creates a 3D cylinder inside a voxel grid and saves it. """
+    """ 
+    Creates a 3D cylinder inside a voxel grid and saves it. 
+    """
     image_data = np.zeros(dimensions, dtype=np.uint8)
     z_min, z_max = center[2] - height // 2, center[2] + height // 2
     x, y = np.indices((dimensions[0], dimensions[1]))
@@ -55,7 +61,9 @@ def create_cylinder_volume(radius: float, height:float, dimensions: tuple[float,
 def create_cone_volume(base_radius: float, height:float, dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
-    """ Creates a 3D cone inside a voxel grid and saves it. """
+    """ 
+    Creates a 3D cone inside a voxel grid and saves it. 
+    """
     image_data = np.zeros(dimensions, dtype=np.uint8)
     z_min, z_max = center[2] - height // 2, center[2] + height // 2
     for z in range(z_min, z_max):
@@ -73,7 +81,9 @@ def create_cone_volume(base_radius: float, height:float, dimensions: tuple[float
 def create_pyramid_volume(base_size: tuple[float, float], height: float, dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
-    """ Creates a 3D pyramid inside a voxel grid and saves it. """
+    """ 
+    Creates a 3D pyramid inside a voxel grid and saves it. 
+    """
     image_data = np.zeros(dimensions, dtype=np.uint8)
     z_min, z_max = center[2] - height // 2, center[2] + height // 2
     for z in range(z_min, z_max):
@@ -92,7 +102,9 @@ def create_pyramid_volume(base_size: tuple[float, float], height: float, dimensi
 def create_torus_volume(major_radius: float, minor_radius: float,  dimensions: tuple[float, float, float], 
                             center: tuple[float, float, float],
                             origin: tuple[float, float, float], spacing: tuple[float, float, float]):
-    """ Creates a 3D torus inside a voxel grid and saves it. """
+    """ 
+    Creates a 3D torus inside a voxel grid and saves it.
+    """
     image_data = np.zeros(dimensions, dtype=np.uint8)
     x, y, z = np.indices(dimensions)
     dx, dy, dz = x - center[0], y - center[1], z - center[2]
@@ -107,7 +119,9 @@ def create_torus_volume(major_radius: float, minor_radius: float,  dimensions: t
     return vtk_image, shape_name
 
 def create_ellipsoid_object(resolution: int, radii: tuple[float, float, float], center: tuple[float, float, float]):
-    """ Create points for the ellipsoid using parametric equations. """
+    """ 
+    Create points for the ellipsoid using parametric equations. 
+    """
     phi = np.linspace(0, np.pi, resolution)
     theta = np.linspace(0, 2 * np.pi, resolution)
     phi, theta = np.meshgrid(phi, theta)
@@ -123,7 +137,9 @@ def create_ellipsoid_object(resolution: int, radii: tuple[float, float, float], 
     return obj_polydata, obj_name
 
 def create_cylinder_object(resolution: int, radius: float, height: float, center: tuple[float, float, float]):
-    """ Create points for the cylinder using parametric equations. """
+    """ 
+    Create points for the cylinder using parametric equations. 
+    """
     theta = np.linspace(0, 2 * np.pi, resolution)
     z = np.linspace(0, height, resolution)
     theta, z = np.meshgrid(theta, z)
@@ -139,7 +155,9 @@ def create_cylinder_object(resolution: int, radius: float, height: float, center
     return obj_polydata, obj_name
 
 def create_cone_object(resolution: int, radius: float, height: float, center: tuple[float, float, float]):
-    """ Create points for the cone using parametric equations. """
+    """ 
+    Create points for the cone using parametric equations. 
+    """
     phi = np.linspace(0, 2 * np.pi, resolution)
     z_values = np.linspace(0, height, resolution)
     phi, z_values = np.meshgrid(phi, z_values)
@@ -155,7 +173,9 @@ def create_cone_object(resolution: int, radius: float, height: float, center: tu
     return obj_polydata, obj_name
 
 def create_torus_object(resolution: int, major_radius: float, minor_radius: float, center: tuple[float, float, float]):
-    """ Create points for the torus using parametric equations """
+    """ 
+    Create points for the torus using parametric equations. 
+    """
     phi = np.linspace(0, 2* np.pi, resolution)
     theta = np.linspace(0, 2 * np.pi, resolution)
     phi, theta = np.meshgrid(phi, theta)
