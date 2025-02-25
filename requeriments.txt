@@ -1,0 +1,5 @@
+numpy
+SimpleITK
+vtk
+os
+matplotlib
